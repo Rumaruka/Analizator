@@ -26,25 +26,26 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
+
+
 namespace AnalisatorPrices
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+
+
+        // Инициазация переменных
         public string textTov;
         public string textPrice;
         public string textTown;
-       
-
+        public event EventHandler SelectionChangeCommitted;
+        Dictionary<string, string> dic;
 
         public MainWindow()
         {
-          
-
             InitializeComponent();
             this.prices.PreviewTextInput += new TextCompositionEventHandler(OnlyNumberInput);
+
         }
 
 
@@ -86,12 +87,6 @@ namespace AnalisatorPrices
                 town1.Text = textTown;
 
 
-                mainGrid.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
-
-                if (!Validator.HasErrors(mainGrid))
-                {
-
-                }
 
 
 
@@ -140,7 +135,7 @@ namespace AnalisatorPrices
 
 
         }
-                    
+
 
         private void onKeyDown_Town(object sender, KeyEventArgs k)
         {
@@ -154,5 +149,16 @@ namespace AnalisatorPrices
             g.Handled = regex.IsMatch(g.Text);
         }
 
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            tovSelect.Items.Remove(tovSelect.SelectedItem);
+            pr.Clear();
+            town1.Clear();
+        }
+
+      
+        
     }
+    
 }
+
