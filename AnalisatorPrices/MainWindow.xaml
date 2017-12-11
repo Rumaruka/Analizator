@@ -1,0 +1,34 @@
+﻿<Window x:Class="AnalisatorPrices.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnalisatorPrices"
+        mc:Ignorable="d"
+        Title="Анализатор" Height="372.234" Width="629.713">
+    <Grid x:Name="mainGrid" Margin="0,0,-8,-9">
+        <Label Content="Введите информацию о товаре" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="calInExcel" Content="Высчитать в Excel" HorizontalAlignment="Left" Height="70" Margin="294,210,0,0" VerticalAlignment="Top" Width="263" Click="createDocument_Click"/>
+        <Label Content="Товар" HorizontalAlignment="Left" Margin="25,41,0,0" VerticalAlignment="Top" Height="24"/>
+        <Label Content="Цена" HorizontalAlignment="Left" Margin="25,68,0,0" VerticalAlignment="Top" Width="43"/>
+        <Label Content="Город" HorizontalAlignment="Left" Margin="25,98,0,0" VerticalAlignment="Top"/>
+
+
+
+        <GroupBox Header="Вся информация" HorizontalAlignment="Left" Height="122" Margin="294,10,0,0" VerticalAlignment="Top" Width="309">
+            <TextBox x:Name="pr" HorizontalAlignment="Left" Height="25" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" KeyDown="onKeyDown_pr"/>
+        </GroupBox>
+
+        <Button x:Name="add" Content="Добавить" HorizontalAlignment="Left" Height="27" Margin="73,135,0,0" VerticalAlignment="Top" Width="98" Click="addText_Click"/>
+        <Button x:Name="delete" Content="Удалить" HorizontalAlignment="Left" Height="27" Margin="505,143,0,0" VerticalAlignment="Top" Width="98"/>
+        <Button x:Name="edit" Content="Редактировать" HorizontalAlignment="Left" Height="27" Margin="294,143,0,0" VerticalAlignment="Top" Width="98"/>
+        <TextBox x:Name="tov" HorizontalAlignment="Left" Height="24" Margin="73,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox x:Name="prices" HorizontalAlignment="Left" Height="24" Margin="73,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"  PreviewTextInput="OnlyNumberInput" />
+        <TextBox x:Name="town" HorizontalAlignment="Left" Height="24" Margin="73,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox x:Name="debug" HorizontalAlignment="Left" Height="92" Margin="50,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193"/>
+        <ComboBox x:Name="tovSelect" HorizontalAlignment="Left" Margin="310,35,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="openDialog" Content="..." HorizontalAlignment="Left" Margin="540,37,0,0" VerticalAlignment="Top" Width="37" Click="openFileDialog_Click"/>
+        <TextBox x:Name="town1" HorizontalAlignment="Left" Height="26" Margin="310,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="onKeyDown_Town"/>
+
+    </Grid>
+</Window>
