@@ -38,13 +38,24 @@ namespace AnalisatorPrices
         public string textTov;
         public string textPrice;
         public string textTown;
-        public event EventHandler SelectionChangeCommitted;
-        Dictionary<string, string> dic;
+      //  public event EventHandler SelectionChangeCommitted;
+       
+
 
         public MainWindow()
         {
             InitializeComponent();
             this.prices.PreviewTextInput += new TextCompositionEventHandler(OnlyNumberInput);
+           // this.tovSelect.Selected += new EventHandler(this.tovSelect_SelectChanged);
+            //Массив
+
+
+
+
+
+
+
+
 
         }
 
@@ -52,7 +63,7 @@ namespace AnalisatorPrices
         //Work For File
         private void CreateExcelDocument(object fileName, object saveAs)
         {
-
+    
         }
 
 
@@ -60,12 +71,12 @@ namespace AnalisatorPrices
         /*
          * Метод добавления текста 
         */
-
+        ObservableCollection<SimpleDataBase> sdb = null;
         private void addText_Click(object sender, RoutedEventArgs e)
         {
             if (tov != null && prices != null && town != null)
             {
-
+                
                 //Запись товара
                 textTov = tov.Text;
 
@@ -86,9 +97,18 @@ namespace AnalisatorPrices
                 textTown = town.Text;
                 town1.Text = textTown;
 
+                
+
+                List<SimpleDataBase> r = new List<SimpleDataBase>(3);
 
 
-
+                r.Add(new SimpleDataBase(textTov, textPrice, textTown));
+               
+                
+                dataBase.ItemsSource = r;
+                dataBase.Items.Refresh();
+                
+               
 
 
             }
@@ -144,6 +164,9 @@ namespace AnalisatorPrices
             //town1.IsEnabled = false;
         }
         private Regex regex = new Regex("[^0-9\\-]+");
+
+        public object ComboBoxStyle { get; }
+
         private void OnlyNumberInput(object sender, TextCompositionEventArgs g)
         {
             g.Handled = regex.IsMatch(g.Text);
@@ -156,9 +179,28 @@ namespace AnalisatorPrices
             town1.Clear();
         }
 
-      
+
+
+
+
+        private void tovSelect_SelectChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+        }
+
+        private void dataBase_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<SimpleDataBase> r = new List<SimpleDataBase>(3);
+
+
+            r.Add(new SimpleDataBase(textTov,textPrice,textTown));
+
+            dataBase.ItemsSource = r;
+        }
+
         
     }
     
 }
+
 
